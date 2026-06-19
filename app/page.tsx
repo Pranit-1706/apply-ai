@@ -25,7 +25,7 @@ export default function Home() {
     if (status === "unauthenticated") router.push("/login");
     if (status === "authenticated") {
       fetch("/api/jobs/save").then(r => r.json()).then(data => {
-        const urls = new Set((data.jobs || []).map((j: any) => j.url));
+        const urls = new Set<string>((data.jobs || []).map((j: any) => j.url));
         setSavedJobs(urls);
       });
     }
